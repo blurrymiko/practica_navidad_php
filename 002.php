@@ -25,16 +25,17 @@ function calcularTotal(array $carrito): float
     return $total;
 }
 
-
-
-// Definimos el recorrido y las variables
+// Definimos el recorrido y las variables y el precio total sin descuentos ($subtotal)
 foreach ($carrito as $registro) {
     $nombre = $registro["producto"];
     $precio = (float)$registro["precio"];
     $cantidad = (int)$registro["cantidad"];
-
+    $subtotal = $precio * $cantidad;
 }
 
+$sinDescuento = calcularTotal($carrito);
+$Descuento = $sinDescuento * $porcentaje;
+$total = $sinDescuento - $porcentaje;
 
 
 
