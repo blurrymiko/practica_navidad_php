@@ -10,6 +10,21 @@ $carrito = [
     ["producto" => "Teclado", "precio" => 45, "cantidad" => 1],
 ];
 
+// Calcular el precio total de la cesta, partiendo de un total de 0€.
+
+function calcularTotal(array $carrito): float
+{
+    $total = 0.0;
+
+    foreach ($carrito as $registro) {
+        // Subtotal por producto: precio unitario * cantidad
+        $subtotal = $registro["precio"] * $registro["cantidad"];
+        $total += $subtotal;
+    }
+
+    return $total;
+}
+
 
 
 // Definimos el recorrido y las variables
@@ -21,18 +36,6 @@ foreach ($carrito as $registro) {
 }
 
 
-// Calcular el precio total de la cesta. 
-
-function calcularTotal(array $carrito): float
-{
-
-  foreach ($carrito as $registro) {
-            $subtotal = $registro["precio"] * $registro["cantidad"];
-        $total += $subtotal;
-    }
-
-    return $total;
-}
 
 
 
