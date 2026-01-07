@@ -38,7 +38,7 @@ foreach ($estudiantes as $nombre => $notas) {
 // Calcular el promedio con la función calcularPromedio
   $promedio = calcularPromedio($notas);
 
-// Definir si aprueban o suspenden en función del promedio (>=6 $aprobado)
+// Definir calificado como aprobado o suspenso en función del valor promedio
   $calificacion = ($promedio >= 6) ? "Aprobado" : "Suspenso";
   if ($calificacion === "Aprobado") {
     $aprobados++;
@@ -46,26 +46,26 @@ foreach ($estudiantes as $nombre => $notas) {
     $suspensos++;
     }
 
-    /* Buscar el mejor promedio posbible comparando el actual con el mejor registrado.
+    /* Buscar el mejor promedio posible comparando el actual con el mejor registrado.
     Solo se actualiza si el actual es mayor, capturando su nombre también. */
     if ($promedio > $mejorPromedio) {
     $mejorPromedio = $promedio;
     $mejorEstudiante = $nombre;
 }
 
-# 4. Muestra de resultados individuales ($nombre $promedio $mejorPromedio? $calificacion)
+// 4. Muestra de resultados individuales ($nombre $promedio $calificacion)
 echo "Estudiante: {$nombre}\n";
 echo "Promedio: " . number_format($promedio, 2) . "\n";
-//echo "Mejor Promedio: "
 echo "Calificado: {$calificacion}\n";
+echo "\n";
 
 }
 
-# 5.1 Muestra $aprobados $suspensos
+// 5.1 Muestra $aprobados $suspensos
 echo "Aprobados: {$aprobados}\n";
 echo "Suspensos: {$suspensos}\n";
 
-# 5.2 Muestra el mejor promedio
+// 5.2 Muestra el mejor promedio
 echo "Mejor promedio: {$mejorEstudiante} (" . number_format($mejorPromedio, 2) . ")\n";
 
 
