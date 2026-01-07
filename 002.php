@@ -34,9 +34,28 @@ foreach ($carrito as $registro) {
 }
 
 $sinDescuento = calcularTotal($carrito);
+
+// Aplicamos el descuento corresponidente por precio (10% - 0.1 5% - 0.5 - 0% 0.0)
+
+$porcentaje = 0.0;
+
+if ($sinDescuento > 1000) {
+    $porcentaje = 0.10;
+} elseif ($sinDescuento > 500) {
+    $porcentaje = 0.05;
+} else {
+    $porcentaje = 0.0;
+}
+
 $Descuento = $sinDescuento * $porcentaje;
 $total = $sinDescuento - $porcentaje;
 
+// Mostrar detalles de la cesta
+
+echo "Cesta\n";
+echo "\n";
+echo "Subtotal: " . number_format($sinDescuento, 2) . " €\n";
+echo "Total: " . number_format($total, 2) . " €\n";
 
 
 
