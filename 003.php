@@ -9,7 +9,6 @@ $texto = "PHP no está muerto… solo sigue trabajando silenciosamente en el 80%
 //1. Cambiar al cadena de caracteres a minúsculas y limpiar caracteres especiales.
 
 $minusculas = mb_strtolower($texto, 'UTF-8');
-//$textoFinal = str_replace('/[^\p{L}\p{N}]+/u', ' ', $minusculas);
 $textoFinal = preg_replace('/[^\p{L}\p{N}]+/u', ' ', $minusculas);
 
 // Si queremos romper las cadenas en trozos, tenemos: 
