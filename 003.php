@@ -9,9 +9,10 @@ $texto = "PHP no está muerto… solo sigue trabajando silenciosamente en el 80%
 //1. Cambiar al cadena de caracteres a minúsculas y limpiar caracteres especiales.
 
 $minusculas = mb_strtolower($texto, 'UTF-8');
-$textoFinal = str_replace('/[^\p{L}\p{N}]+/u', ' ', $minusculas);
+//$textoFinal = str_replace('/[^\p{L}\p{N}]+/u', ' ', $minusculas);
+$textoFinal = preg_replace('/[^\p{L}\p{N}]+/u', ' ', $minusculas);
 
-// Si queremos romper las cadenas en trozos, tenemos: • explode: convierte en array la cadena mediante un separador.
+// Si queremos romper las cadenas en trozos, tenemos: 
 
 $trozos = ($textoFinal === '') ? [] : explode(' ', $textoFinal);
 
@@ -40,6 +41,10 @@ foreach ($cuenta as $palabra => $veces) {
         echo "- {$palabra}: {$veces}\n";
         $repetidas = true;
     }
+}
+
+if (!$repetidas) {
+    echo "Ninguna palabra se repite.\n";
 }
 
 // 5. Encontrar la palabra más repetida
