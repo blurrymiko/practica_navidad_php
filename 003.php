@@ -19,14 +19,44 @@ $trozos = ($textoFinal === '') ? [] : explode(' ', $textoFinal);
 
 $palabras = [];
 
-foreach ($trozos as $trozos) {
-    if (mb_strlen($trozos, 'UTF-8') >= 3) {
-        $palabras[] = $trozos;
+foreach ($trozos as $numeroTrozos) {
+    if (mb_strlen($numeroTrozos, 'UTF-8') >= 3) {
+        $palabras[] = $numeroTrozos;
     }
 }
 
 // 2. Contamos el número de palabras
 $totalPalabras = count($palabras);
 
-// 3. 
+// 3. Contar cuánto se repite cada palabra
+$cuenta = array_count_values($palabras);
+echo "Texto: {$textoFinal}\n\n";
+echo "Palabras: {$totalPalabras}\n\n";
+echo "Repetidas (> 1):\n";
+
+$repetidas = false;
+foreach ($cuenta as $palabra => $veces) {
+    if ($veces > 1) {
+        echo "- {$palabra}: {$veces}\n";
+        $repetidas = true;
+    }
+}
+
+// 5. Encontrar la palabra más repetida
+
+$repetida = "";
+$repeticiones = 0;
+
+foreach ($cuenta as $palabra => $veces) {
+    if ($veces > $repeticiones) {
+        $repeticiones = $veces;
+        $repetida = $palabra;
+    }
+}
+
+echo "La palabra {$repetida} es la más repetida: ({$repeticiones}) veces\n";
+
+
+
+
 
